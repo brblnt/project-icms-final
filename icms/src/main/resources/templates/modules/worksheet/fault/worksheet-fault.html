@@ -1,0 +1,45 @@
+<div th:fragment="worksheet-fault">
+    <table id="fault" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th hidden>ID</th>
+            <th>Név</th>
+            <th>Egyéb</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="fault: ${faults}">
+            <td th:text="${fault.id}" hidden></td>
+            <td th:text="${fault.faultName}"></td>
+            <td th:text="${fault.faultOther}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-9 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <div id="frameFault">
+                        <div th:replace="~{/modules/worksheet/fault/worksheet-fault-fragment-empty :: empty}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <div th:replace="~{/modules/worksheet/worksheet-button-group :: buttons}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form method="GET" action="JavaScript:worksheetFaultCreate()">
+        <input type="submit" id="create-form" hidden/>
+    </form>
+
+    <hr>
+</div>

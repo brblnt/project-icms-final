@@ -1,0 +1,56 @@
+<div th:fragment="worksheet-module" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 mb-3 mb-sm-0">
+            <a class="nav-link" th:href="@{/worksheet/list}">
+                <h4 class="font-weight-bold">MUNKALAPOK</h4></a>
+        </div>
+        <div class="col-sm-6">
+            <a th:href="@{/worksheet/customers}" class="btn btn-primary p-1"><i class="bi bi-people"></i> Ügyfelek</a>
+            <a th:href="@{/worksheet/dealers}" class="btn btn-primary p-1"><i class="bi bi-people"></i> Partnerek</a>
+            <a th:href="@{/worksheet/items}" class="btn btn-secondary p-1"><i class="bi bi-box2"></i> Tárgyak</a>
+            <a th:href="@{/worksheet/products}" class="btn btn-dark p-1"><i class="bi bi-gear"></i> Alkatrészek</a>
+            <a th:href="@{/worksheet/services}" class="btn btn-warning p-1" p-1><i class="bi bi-code-square"></i> Műveletek</a>
+            <a th:href="@{/worksheet/fault}" class="btn btn-danger p-1"><i class="bi bi-exclamation-triangle"></i> Hibák</a>
+        </div>
+        <div class="col-sm-2">
+            <a th:href="@{/worksheet/new}" class="btn btn-success p-1"><i class="bi bi-plus"></i> Hozzáadás</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div th:switch="${worksheetContent}">
+            <div th:case="'list'">
+                <div th:replace="~{/modules/worksheet/list/worksheet-list :: worksheet-list}"
+                     class="container-fluid"></div>
+            </div>
+            <div th:case="'new'">
+                <div th:replace="~{/modules/worksheet/worksheet-new :: worksheet-new}" class="container-fluid"></div>
+            </div>
+            <div th:case="'customer'">
+                <div th:replace="~{/modules/worksheet/customer/worksheet-customer :: worksheet-customer}"
+                     class="container-fluid"></div>
+            </div>
+            <div th:case="'fault'">
+                <div th:replace="~{/modules/worksheet/fault/worksheet-fault :: worksheet-fault}"
+                     class="container-fluid"></div>
+            </div>
+            <div th:case="'object'">
+                <div th:replace="~{/modules/worksheet/object/worksheet-object :: worksheet-object}"
+                     class="container-fluid"></div>
+            </div>
+            <div th:case="'product'">
+                <div th:replace="~{/modules/worksheet/product/worksheet-product :: worksheet-product}"
+                     class="container-fluid"></div>
+            </div>
+            <div th:case="'service'">
+                <div th:replace="~{/modules/worksheet/service/worksheet-service :: worksheet-service}"
+                     class="container-fluid"></div>
+            </div>
+            <div th:case="'dealer'">
+                <div th:replace="~{/modules/worksheet/dealer/worksheet-dealer :: worksheet-dealer}"
+                     class="container-fluid"></div>
+            </div>
+        </div>
+    </div>
+
+</div>

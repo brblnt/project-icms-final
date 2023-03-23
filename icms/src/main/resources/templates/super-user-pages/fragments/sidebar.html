@@ -1,0 +1,20 @@
+<div th:fragment="superUserSidebar">
+    <div class="sidebar-heading">
+        Rendszer beállítások
+    </div>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSuperUserMenu"
+           aria-expanded="true" aria-controls="collapseSuperUserMenu">
+            <i class="bi bi-gear"></i>
+            <span>Beállítások</span>
+        </a>
+        <div id="collapseSuperUserMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Testreszabás</h6>
+                <a class="collapse-item" th:href="@{/super-user/settings/basics}">Információ beállítások</a>
+                <a class="collapse-item" th:href="@{/super-user/settings/workers}">Munkatársak</a>
+            </div>
+        </div>
+    </li>
+    <hr class="sidebar-divider">
+</div>

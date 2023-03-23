@@ -1,0 +1,15 @@
+<div th:fragment="super-user-content" class="container-fluid">
+
+    <div th:switch="${superUserContent}">
+        <div th:case="'basic-information-settings'">
+            <div th:replace="~{/super-user-pages/settings/basic-information-settings  :: basic-information-settings}"
+                 class="container-fluid"></div>
+        </div>
+        <div th:case="'workers'">
+            <div th:replace="~{/super-user-pages/settings/workers  :: workers-settings}" class="container-fluid"></div>
+        </div>
+        <div th:case="*">
+            <div th:include="~{/user-pages/index-user :: user-content}" class="container-fluid"></div>
+        </div>
+    </div>
+</div>

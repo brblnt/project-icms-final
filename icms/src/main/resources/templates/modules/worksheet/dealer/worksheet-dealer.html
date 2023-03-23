@@ -1,0 +1,54 @@
+<div th:fragment="worksheet-dealer">
+
+
+    <table id="dealer" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th hidden>ID</th>
+            <th>Név</th>
+            <th>Cím</th>
+            <th>E-mail cím</th>
+            <th>Telefonszám</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dealer: ${dealers}">
+            <td th:text="${dealer.id}" hidden></td>
+            <td th:text="${dealer.dealerName}"></td>
+            <td th:text="${dealer.address1.cityName}+ ' ' +${dealer.address1.address}"></td>
+            <td th:text="${dealer.emailAddress}"></td>
+            <td th:text="${dealer.phoneNumber}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-9 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <div id="frameDealer">
+                        <div th:replace="~{/modules/worksheet/dealer/worksheet-dealer-fragment-empty :: empty}"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <div th:replace="~{/modules/worksheet/worksheet-button-group :: buttons}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+
+    <form method="GET" action="JavaScript:worksheetDealerCreate()">
+        <input type="submit" id="create-form" hidden/>
+    </form>
+
+
+</div>

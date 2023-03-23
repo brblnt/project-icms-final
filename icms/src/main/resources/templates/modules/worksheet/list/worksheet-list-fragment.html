@@ -1,0 +1,213 @@
+<div th:fragment="worksheet">
+    <form class="user" method="post" th:action="@{'/worksheet/'+ ${actualWorksheet.id} +'/edit'}">
+        <div class="form-group row">
+            <div class="col-sm-2 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">ID</span>
+                <input type="text" class="form-control form-control-user"
+                       id="id" placeholder="" disabled th:value="${actualWorksheet.id}">
+            </div>
+            <div class="col-sm-2 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Állapot</span>
+                <select class="form-select text-muted form-control-user" id="stateSelect"
+                        style="padding: 0.9rem 1rem;" th:field="${actualWorksheet.state}" th:name="state">
+                    <option value="1">Lezárt</option>
+                    <option value="2">Nyitott</option>
+                    <option value="3">Egyéb</option>
+                </select>
+            </div>
+            <div class="col-sm-8">
+                <span class="form-group-text form-control-user">Termék</span>
+                <select class="form-select text-muted form-control-user" style="padding: 0.9rem 1.0rem;" id="item"
+                        disabled th:name="object">
+                    <option selected th:value="${actualWorksheet.object.id}"
+                            th:text="${actualWorksheet.object.itemName}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-12 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Ügyfél</span>
+                <select class="form-select text-muted form-control-user" style="padding: 0.9rem 1.0rem;"
+                        id="customerRoll" th:name="customer" disabled>
+                    <option selected th:value="${actualWorksheet.customer.id}"
+                            th:text="${actualWorksheet.customer.customerName}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Hiba</span>
+                <select class="form-select text-muted form-control-user" style="padding: 0.75rem 1.0rem;"
+                        id="faultSelect">
+                    <option selected></option>
+                    <th:block th:each="fault: ${faults}">
+                        <option th:value="${fault.id}" th:text="${fault.faultName}"></option>
+                    </th:block>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" onclick="addFaultsForExistWorksheet()" class="btn btn-success btn-user btn-block"
+                        style="margin-top: 1.5rem;">Hozzáadás
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <table id="faultList" class="table mx-auto text-center fixed" style="width:80%">
+                <col width="200px"/>
+                <col width="100px"/>
+                <thead>
+                <tr class="text-center">
+                    <th hidden>ID</th>
+                    <th>HIBÁK</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="fault: ${actualWorksheet.faults}">
+                <tr th:id="'255'+${fault.id}+'12'">
+                    <td th:text="${fault.id}" hidden></td>
+                    <td th:text="${fault.faultName}"></td>
+                    <td>
+                        <button  type="button" th:onclick="'removeTableRow(255'+${fault.id}+'12)'" class="btn btn-danger"><i class="bi bi-dash"></i></button>
+                    </td>
+                </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Felhasznált termékek</span>
+                <select class="form-select text-muted form-control-user" style="padding: 0.75rem 1.0rem;"
+                        id="productSelect">
+                    <option selected></option>
+                    <th:block th:each="product: ${products}">
+                        <option th:value="${product.id}" th:text="${product.productName}"></option>
+                    </th:block>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" onclick="addProductsForExistWorksheet()"
+                        class="btn btn-success btn-user btn-block"
+                        style="margin-top: 1.5rem;">Hozzáadás
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <table id="productList" class="table mx-auto text-center fixed" style="width:80%">
+                <col width="200px"/>
+                <col width="100px"/>
+                <thead>
+                <tr>
+                    <th hidden>ID</th>
+                    <th class="text-center">FELHASZNÁLT TERMÉKEK</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="product: ${actualWorksheet.products}">
+                    <tr th:id="'998'+${product.id}+'15'">
+                    <td th:text="${product.id}" hidden></td>
+                    <td th:text="${product.productName}"></td>
+                    <td>
+                        <button  type="button" th:onclick="'removeTableRow(998'+${product.id}+'15)'" class="btn btn-danger"><i class="bi bi-dash"></i></button>
+                    </td>
+                </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-sm-10 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Szolgáltatás</span>
+                <select class="form-select text-muted form-control-user" style="padding: 0.75rem 1.0rem;"
+                        id="serviceSelect">
+                    <option selected></option>
+                    <th:block th:each="service: ${services}">
+                        <option th:value="${service.id}" th:text="${service.serviceName}"></option>
+                    </th:block>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" onclick="addServicesForExistWorksheet()"
+                        class="btn btn-success btn-user btn-block"
+                        style="margin-top: 1.5rem;">Hozzáadás
+                </button>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <table id="serviceList" class="table mx-auto text-center fixed" style="width:80%">
+                <col width="200px"/>
+                <col width="100px"/>
+                <thead>
+                <tr>
+                    <th hidden>ID</th>
+                    <th class="text-center">SZOLGÁLTATÁSOK</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="service: ${actualWorksheet.services}">
+                <tr th:id="'128'+${service.id}+'14'">
+                    <td th:text="${service.id}" hidden></td>
+                    <td th:text="${service.serviceName}"></td>
+                    <td>
+                        <button  type="button" th:onclick="'removeTableRow(128'+${service.id}+'14)'" class="btn btn-danger"><i class="bi bi-dash"></i></button>
+                    </td>
+                </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Technikus kódja</span>
+                <select class="form-select text-muted form-control-user" style="padding: 0.9rem 1.0rem;"
+                        id="engineerCode" th:name="engineerCode">
+                    <option selected th:value="${actualWorksheet.engineerCode}"
+                            th:text="${actualWorksheet.engineerCode}"></option>
+                    <th:block th:each="worker: ${workers}">
+                        <option th:value="${worker.customCode}"
+                                th:text="${worker.customCode} + ' - (' + ${worker.name} +')'"></option>
+                    </th:block>
+                </select>
+            </div>
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Hozzáadás dátuma</span>
+                <input type="text" class="form-control form-control-user" th:name="createDate"
+                       id="createDate" placeholder="XXXX-XX-XX" th:value="${actualWorksheet.createDate}" disabled>
+            </div>
+            <div class="col-sm-4">
+                <span class="form-group-text form-control-user">Lezárás dátuma</span>
+                <input type="text" class="form-control form-control-user" th:name="finishDate" required
+                       id="finishDate" placeholder="XXXX-XX-XX" th:value="${actualWorksheet.finishDate}">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <span class="form-group-text form-control-user">Egyéb</span>
+            <textarea class="form-control" style="border-radius: 1rem" id="other" rows="3" th:name="other"
+                      th:text="${actualWorksheet.other}"></textarea>
+        </div>
+        <textarea id="faultIDList" rows="3" hidden th:name="faults"></textarea>
+        <textarea id="serviceIDList" rows="3" hidden th:name="services"></textarea>
+        <textarea id="productIDList" rows="3" hidden th:name="products"></textarea>
+        <input type="submit" id="save-form-worksheet" hidden/>
+        <input type="button" onclick="javascript:getDataFromTableForInput()" id="save-form" hidden/>
+    </form>
+    <form method="GET" th:action="@{'/worksheet/'+ ${actualWorksheet.id} +'/delete'}">
+        <input type="submit" id="remove-form" hidden/>
+    </form>
+    <form method="GET" th:action="@{'/worksheet/'+ ${actualWorksheet.id} +'/export'}">
+        <input type="submit" id="export-form" hidden/>
+    </form>
+</div>

@@ -1,0 +1,111 @@
+<div th:fragment="worksheet-new">
+    <div class="container">
+        <div>
+
+            <div class="p-5">
+                <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Munkalap létrehozása</h1>
+                </div>
+
+                <form class="user" method="post" th:action="@{/worksheet/new}">
+
+                    <div class="form-group row">
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <label for="stateSelect" class="form-label">Állapot</label>
+                            <select class="form-select text-muted form-control-user" id="stateSelect" th:name="state"
+                                    style="padding: 0.75rem 1.0rem;">
+                                <option selected value="2">Nyitott</option>
+                                <option value="3">Egyéb</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-8">
+                            <label for="customerSelect" class="form-label">Ügyfél</label>
+                            <select class="form-select text-muted form-control-user"
+                                    onchange="javascript:newWorksheetCustomerSelected()"
+                                    style="padding: 0.75rem 1.0rem;" th:name="customer" id="customerSelect">
+                                <option selected th:name="customer"></option>
+                                <th:block th:each="tempCustomer: ${allCustomer}">
+                                    <option th:value="${tempCustomer.id}" th:name="customer"
+                                            th:text="${tempCustomer.customerName}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8 mb-3 mb-sm-0">
+                            <label for="customerThingSelect" class="form-label">Termék</label>
+
+                            <div id="itemFragmentNewWorksheet">
+                                <select class="form-select text-muted form-control-user" style="padding: 0.75rem 1rem;"
+                                        id="" disabled>
+                                    <option selected>Előbb válassz ügyfelet</option>
+                                </select>
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-4">
+                            <a th:href="@{/worksheet/items}" class="btn btn-secondary btn-user btn-block"
+                               style="margin-top: 2rem;">Új tárgy</a>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group row">
+                        <div class="col-sm-8 mb-3 mb-sm-0">
+                            <label for="faultSelect" class="form-label">Hiba</label>
+                            <select class="form-select text-muted form-control-user" style="padding: 0.75rem 1.0rem;"
+                                    id="faultSelect" th:name="fault">
+                                <option selected></option>
+                                <th:block th:each="tempFault: ${allFault}">
+                                    <option th:value="${tempFault.id}" th:name="customer"
+                                            th:text="${tempFault.faultName}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <a class="btn btn-success btn-user btn-block" href="javascript:addFaultsForWorksheet()"
+                               style="margin-top: 2rem;">Hozzáadás</a>
+                        </div>
+                        <div class="col-sm-2">
+                            <a th:href="@{/worksheet/fault}" class="btn btn-secondary btn-user btn-block"
+                               style="margin-top: 2rem;">Új hiba</a>
+                        </div>
+
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                        <label for="faultList" hidden class="form-label" id="faultListLabel">Hibák: </label>
+                        <textarea class="form-control" hidden style="border-radius: 1rem" id="faultList" rows="3"
+                                  disabled></textarea>
+                        <textarea class="form-control" hidden th:name="faults" style="border-radius: 1rem"
+                                  id="faultIdList" rows="3">0</textarea>
+                    </div>
+                    <hr>
+
+                    <div class="mb-3">
+                        <label for="worksheetOther" class="form-label">Egyéb</label>
+                        <textarea class="form-control" style="border-radius: 1rem" th:name="other" id="worksheetOther"
+                                  rows="3"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary btn-user btn-block" id="newWorksheetButton" disabled>Léterhozás</button>
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div th:fragment="itemsForCustomer">
+    <select class="form-select text-muted form-control-user" style="padding: 0.75rem 1rem;" id="customerThingSelect"
+            th:name="object">
+        <option selected></option>
+        <th:block th:each="tempItem: ${items}">
+            <option th:value="${tempItem.id}" th:name="object" th:text="${tempItem.itemName}"></option>
+        </th:block>
+    </select>
+</div>

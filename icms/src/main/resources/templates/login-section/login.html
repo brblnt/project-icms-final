@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hu"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bejelentkezés</title>
+
+    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.2/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/sb-admin-2.min.css}">
+
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-6 col-md-6">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="p-5">
+
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Jelentkezz be!</h1>
+                                </div>
+
+                                <div class="alert alert-danger text-center" th:if="${param.error}">
+                                    Hibás felhasználónév vagy jelszó!
+                                </div>
+
+                                <form class="user form-signin" method="post" action="/login">
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user"
+                                               name="loginInputUsername"
+                                               id="loginInputUsername" placeholder="Felhasználónév" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user"
+                                               name="loginInputPassword"
+                                               id="loginInputPassword" placeholder="Jelszó" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox small">
+                                            <input type="checkbox" class="custom-control-input"
+                                                   id="loginRememberMe" name="loginRememberMe">
+                                            <label class="custom-control-label"
+                                                   for="loginRememberMe">Maradjak bejelentkezve</label>
+                                        </div>
+                                    </div>
+
+                                    <button class="btn btn-primary btn-user btn-block" type="submit">Bejelentkezés
+                                    </button>
+
+                                </form>
+
+                                <hr>
+
+                                <div class="text-center">
+                                    <a class="small" th:href="@{/login/help}">Elfelejtetted a jelszavadat?</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Az alkalmazás támogatja a reszponzív megjelenítést, azonban előfordulhat hogy különböző elsősorban
+                kisebb felbontásű kijelzőkön nem megfelelően jelennek meg bizonyos elemek.</span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<div th:fragment="basic-information-settings">
+    <div th:insert="~{/super-user-pages/settings/basics-address-pop-up :: addressPopUp}"></div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <div class="card">
+                <h5 class="card-header">Alapadatok beállítása</h5>
+                <div class="card-body">
+                    <form class="user" method="post" th:action="@{/super-user/settings/basics/update}">
+                        <div class="form-group row">
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Név</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="name" placeholder="" th:name="companyName" th:value="${company.companyName}"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">E-mail cím</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="emailAddress" placeholder="minta@mail.hu" th:name="emailAddress"
+                                       th:value="${company.emailAddress}" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="form-group-text form-control-user">Telefonszám</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="phoneNumber" placeholder="+XX XX/XXX-XXXX" th:name="phoneNumber"
+                                       th:value="${company.phoneNumber}" required>
+                            </div>
+                        </div>
+                        <input type="text" hidden th:value="${company.finance.financeID}" th:name="finance">
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Számlaszám</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="accountNumber" placeholder="xxxxxxxx-xxxxxxxx-xxxxxxx"
+                                       th:name="bankAccountNumber" th:value="${company.finance.bankAccountNumber}"
+                                       required>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="form-group-text form-control-user">Számlaszám nemzetközi</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="iban" placeholder="TTXX-XXXXXXXXXXXXXXXXXXXXXXXX"
+                                       th:name="bankAccountNumberInternational"
+                                       th:value="${company.finance.bankAccountNumberInternational}" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Adószám</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="finance" placeholder="xxxxxxxx-x-xx" th:name="numberVAT"
+                                       th:value="${company.finance.numberVAT}" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="form-group-text form-control-user">Közösségi adószám</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="euFinance" placeholder="HUXXXXXXXX" th:name="euNumberVAT"
+                                       th:value="${company.finance.euNumberVAT}" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-9 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Székhely</span>
+                                <input type="text" hidden th:value="${company.address1.addressID}" th:name="address1">
+                                <input type="text" class="form-control form-control-user"
+                                       id="address1" placeholder="" disabled
+                                       th:value="${company.address1.cityName} + ', ' + ${company.address1.address}">
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="#" data-toggle="modal" data-target="#addressModal"
+                                   class="btn btn-secondary btn-user btn-block"
+                                   style="margin-top: 1.6rem;">Módosítás
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-9 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Telephely</span>
+                                <input type="text" hidden th:value="${company.address2.addressID}" th:name="address2">
+                                <input type="text" class="form-control form-control-user"
+                                       id="address2" placeholder="" disabled
+                                       th:value="${company.address2.cityName} + ', ' + ${company.address2.address}">
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="#" data-toggle="modal" data-target="#addressModal2"
+                                   class="btn btn-secondary btn-user btn-block"
+                                   style="margin-top: 1.6rem;">Módosítás
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-9 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Számlázási cím</span>
+                                <input type="text" hidden th:value="${company.address3.addressID}" th:name="address3">
+                                <input type="text" class="form-control form-control-user"
+                                       id="address3" placeholder="" disabled
+                                       th:value="${company.address3.cityName} + ', ' + ${company.address3.address}">
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="#" data-toggle="modal" data-target="#addressModal3"
+                                   class="btn btn-secondary btn-user btn-block"
+                                   style="margin-top: 1.6rem;">Módosítás
+                                </a>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <span class="form-group-text form-control-user">Egyéb</span>
+                            <textarea class="form-control" style="border-radius: 1rem" id="other" rows="3"
+                                      th:name="other" th:text="${company.other}"></textarea>
+                        </div>
+                        <div class="container my-auto p-5 m5">
+                            <div class="copyright text-center my-auto small">
+                                <span th:name="modificationDate"
+                                      th:text="'Módosítás dátuma: '+${company.modificationDate}">Módosítás dátuma: XXXX-XX-XX</span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">Mentés</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <hr>
+</div>

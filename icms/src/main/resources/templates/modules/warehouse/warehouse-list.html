@@ -1,0 +1,155 @@
+<div th:fragment="warehouse-list">
+    <table id="warehouse" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>Termék</th>
+            <th>Raktár</th>
+            <th>Mennyiség</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>minta termék</td>
+            <td>R1 - 4X2</td>
+            <td>245 egység</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-9 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <form class="user" method="post" action="#">
+                        <div class="form-group row">
+                            <div class="col-sm-2 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">ID</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="id" placeholder="">
+                            </div>
+                            <div class="col-sm-5 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Cikkszám</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="customId" placeholder="">
+                            </div>
+                            <div class="col-sm-5">
+                                <span class="form-group-text form-control-user">Vonalkód</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="barcode" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Termék neve</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="item" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Beszállító</span>
+                                <select class="form-control-user text-muted form-select"
+                                        style="padding: 0.9rem 1.0rem;">
+                                    <option selected></option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <span class="form-group-text form-control-user">Beszerzés</span>
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Ár nettó</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="priceInN" placeholder="">
+                            </div>
+                            <div class="col-sm-4">
+                                <span class="form-group-text form-control-user">Ár bruttó</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="priceInB" placeholder="">
+                            </div>
+                            <div class="col-sm-4">
+                                <span class="form-group-text form-control-user">ÁFA</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="vatIn" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <span class="form-group-text form-control-user">Eladás</span>
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Ár nettó</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="priceSellN" placeholder="">
+                            </div>
+                            <div class="col-sm-4">
+                                <span class="form-group-text form-control-user">Ár bruttó</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="priceSellB" placeholder="">
+                            </div>
+                            <div class="col-sm-4">
+                                <span class="form-group-text form-control-user">ÁFA</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="vatSell" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                                <span class="form-group-text text-muted form-control-user">Raktár kódja</span>
+                                <select class="form-select  form-control-user" style="padding: 0.9rem 1.0rem;"
+                                        id="warehouseCode">
+                                    <option selected></option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Mennyiség</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="count" placeholder="">
+                            </div>
+                            <div class="col-sm-4">
+                                <span class="form-group-text form-control-user">Egység</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="countMeter" placeholder="">
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <span class="form-group-text form-control-user">Egyéb</span>
+                            <textarea class="form-control" style="border-radius: 1rem" id="other" rows="3"></textarea>
+                        </div>
+
+                        <div class="container my-auto p-5 m5">
+                            <div class="copyright text-center my-auto small">
+                                <span>Utolsó módosítás dátuma: XXXX-XX-XX | Hozzáadás dátuma: XXXX-XX-XX</span>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row" style="padding: 5px">
+                        <button class="btn btn-success">Mentés</button>
+                    </div>
+                    <div class="row" style="padding: 5px">
+                        <button class="btn btn-warning">Duplikálás</button>
+                    </div>
+                    <div class="row" style="padding: 5px">
+                        <button class="btn btn-danger">Törlés</button>
+                    </div>
+                    <div class="row" style="padding: 5px">
+                        <button class="btn btn-primary">Adatlap</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>

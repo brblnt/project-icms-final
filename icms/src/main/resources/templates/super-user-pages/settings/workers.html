@@ -1,0 +1,62 @@
+<div th:fragment="workers-settings">
+    <div class="row">
+        <div class="col-12">
+            <h5>Személyek kezelése</h5>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="table-responsive ">
+            <table id="colleagues" class="display" style="width:100%">
+                <thead>
+                <tr>
+                    <th hidden>ID</th>
+                    <th>Egyedi ID</th>
+                    <th>Név</th>
+                    <th>Beosztás</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="worker: ${workers}">
+                    <td hidden th:text="${worker.id}"></td>
+                    <td th:text="${worker.customCode}"></td>
+                    <td th:text="${worker.name}"></td>
+                    <td th:text="${worker.position}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-9 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <div id="frameWorker">
+                        <div th:replace="~{/super-user-pages/settings/workers/workers-fragment-empty :: empty}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row" style="padding: 5px">
+                        <label class="btn btn-success" for="create-form">Új létrehozása</label>
+                    </div>
+                    <div class="row" style="padding: 5px">
+                        <label class="btn btn-success" for="submit-form">Mentés</label>
+                    </div>
+                    <div class="row" style="padding: 5px">
+                        <label class="btn btn-danger" for="remove-form">Törlés</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form method="GET" action="JavaScript:workerCreate()">
+        <input type="submit" id="create-form" hidden/>
+    </form>
+    <hr>
+</div>

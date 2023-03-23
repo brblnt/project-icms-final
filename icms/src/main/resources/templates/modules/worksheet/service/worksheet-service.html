@@ -1,0 +1,50 @@
+<div th:fragment="worksheet-service">
+    <table id="service" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th hidden>ID</th>
+            <th>Egyedi Azon.</th>
+            <th>Név</th>
+            <th>Ár Nettó</th>
+            <th>Ár Bruttó</th>
+            <th>ÁFA</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="service: ${services}">
+            <td hidden th:text="${service.id}"></td>
+            <td th:text="${service.customCode}"></td>
+            <td th:text="${service.serviceName}"></td>
+            <td th:text="${service.priceN}"></td>
+            <td th:text="${service.priceB}"></td>
+            <td th:text="${service.vat}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-9 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <div id="frameService">
+                        <div th:replace="~{/modules/worksheet/service/worksheet-service-fragment-empty :: empty}"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <div th:replace="~{/modules/worksheet/worksheet-button-group :: buttons}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <form method="GET" action="JavaScript:worksheetServiceCreate()">
+        <input type="submit" id="create-form" hidden/>
+    </form>
+</div>

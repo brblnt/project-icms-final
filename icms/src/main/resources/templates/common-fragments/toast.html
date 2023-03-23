@@ -1,0 +1,32 @@
+<div th:fragment="toast">
+    <div class="toast-container position-fixed bottom-0 end-0 p-3 ">
+        <div class="container-fluid text-center">
+            <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div th:class="'toast-header text-bg-'+${color}">
+                    <th:block th:switch="${toastType}">
+                        <th:block th:case="'info'">
+                            <i class="bi bi-info-circle"></i>
+                        </th:block>
+                        <th:block th:case="'danger'">
+                            <i class="bi bi-exclamation-octagon"></i>
+                        </th:block>
+                        <th:block th:case="'warning'">
+                            <i class="bi bi-exclamation-triangle"></i>
+                        </th:block>
+                    </th:block>
+
+                    <strong class="me-auto" th:text="${toastHeader}"></strong>
+                    <small th:text="${toastSmall}"></small>
+                    <button type="button" class="btn-close text-bg-danger" data-bs-dismiss="toast"
+                            aria-label="Close"></button>
+                </div>
+                <div class="toast-body text-bg-tertiary">
+                    <p th:text="${toastMessage}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

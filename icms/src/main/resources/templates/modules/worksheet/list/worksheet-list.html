@@ -1,0 +1,50 @@
+<div th:fragment="worksheet-list">
+    <table id="listForWorksheet" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th hidden>ID</th>
+            <th>Állapot</th>
+            <th>Termék</th>
+            <th>ügyfél</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="worksheet: ${worksheets}">
+            <td th:text="${worksheet.id}" hidden></td>
+            <td th:text="${worksheet.state == '1' ? 'Lezárt' : worksheet.state == '2' ? 'Nyitott' : 'Egyéb'}"></td>
+            <td th:text="${worksheet.object.itemName}"></td>
+            <td th:text="${worksheet.customer.customerName}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-9 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <div id="frameWorksheet">
+                        <div th:replace="~{/modules/worksheet/list/worksheet-list-fragment-empty :: empty}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row" style="padding: 5px">
+                        <label class="btn btn-success" for="save-form">Mentés</label>
+                    </div>
+                    <div class="row" style="padding: 5px">
+                        <label class="btn btn-danger" for="remove-form">Törlés</label>
+                    </div>
+                    <div class="row" style="padding: 5px">
+                        <label class="btn btn-primary" for="export-form">Adatlap</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>

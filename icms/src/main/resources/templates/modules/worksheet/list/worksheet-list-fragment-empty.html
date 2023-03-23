@@ -1,0 +1,113 @@
+<div th:fragment="empty">
+    <form class="user" method="post" action="#">
+
+        <div class="form-group row">
+            <div class="col-sm-2 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">ID</span>
+                <input type="text" class="form-control form-control-user"
+                       id="id" placeholder="" disabled>
+            </div>
+            <div class="col-sm-2 mb-3 mb-sm-0">
+                <span class="form-group-text text-muted form-control-user">Állapot</span>
+                <select class="form-select text-muted form-control-user" id="stateSelect"
+                        style="padding: 0.9rem 1rem;">
+                    <option selected></option>
+                    <option value="1">Lezárt</option>
+                    <option value="2">Nyitott</option>
+                    <option value="3">Egyéb</option>
+                </select>
+            </div>
+            <div class="col-sm-8">
+                <span class="form-group-text form-control-user">Termék</span>
+                <select class="form-select text-muted form-control-user" style="padding: 0.9rem 1.0rem;" id="item"
+                        disabled>
+                    <option selected></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-12 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Ügyfél</span>
+                <select class="form-select text-muted form-control-user" style="padding: 0.9rem 1.0rem;"
+                        id="customerRoll"
+                        disabled>
+                    <option selected></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Hiba</span>
+                <select class="form-select text-muted form-control-user" style="padding: 0.75rem 1.0rem;"
+                        id="faultSelect">
+                    <option selected></option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-success btn-user btn-block" disabled
+                        style="margin-top: 1.5rem;">Hozzáadás
+                </button>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-sm-10 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Felhasznált termékek</span>
+                <select class="form-select  form-control-user" style="padding: 0.75rem 1.0rem;"
+                        id="productSelect">
+                    <option selected></option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-success btn-user btn-block" disabled
+                        style="margin-top: 1.5rem;">Hozzáadás
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Szolgáltatás</span>
+                <select class="form-select text-muted form-control-user" style="padding: 0.75rem 1.0rem;"
+                        id="serviceSelect">
+                    <option selected></option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-success btn-user btn-block" disabled
+                        style="margin-top: 1.5rem;">Hozzáadás
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Technikus kódja</span>
+                <select class="form-select text-muted form-control-user" style="padding: 0.9rem 1.0rem;"
+                        id="engineerCode">
+                    <option selected></option>
+                </select>
+            </div>
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Hozzáadás dátuma</span>
+                <input type="text" class="form-control form-control-user"
+                       id="createDate" placeholder="XXXX-XX-XX">
+            </div>
+            <div class="col-sm-4">
+                <span class="form-group-text form-control-user">Lezárás dátuma</span>
+                <input type="text" class="form-control form-control-user"
+                       id="finishDate" placeholder="XXXX-XX-XX">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <span class="form-group-text form-control-user">Egyéb</span>
+            <textarea class="form-control" style="border-radius: 1rem" id="other" rows="3"></textarea>
+        </div>
+
+    </form>
+
+</div>

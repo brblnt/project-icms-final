@@ -1,0 +1,22 @@
+<div th:fragment="admin-content" class="container-fluid">
+    <div th:switch="${content}">
+        <div th:case="'profile-page'">
+            <div th:insert="~{/common-fragments/open-from-topbar/profile-page :: profilePage( ${userTopBar} )}"></div>
+        </div>
+        <div th:case="'user-manage'">
+            <div th:insert="~{/admin-user-pages/subpages/users/user-list :: adminUserList( ${allUser} )}"></div>
+        </div>
+        <div th:case="'user-create'">
+            <div th:insert="~{/admin-user-pages/subpages/users/user-create :: adminUserCreate}"></div>
+        </div>
+        <div th:case="'user-edit'">
+            <div th:insert="~{/admin-user-pages/subpages/users/user-edit :: adminUserEdit( ${userEdit} )}"></div>
+        </div>
+        <div th:case="'database'">
+            <div th:insert="~{/admin-user-pages/subpages/manage-database :: adminDatabaseManage}"></div>
+        </div>
+        <div th:case="*">
+            <div th:insert="~{/common-fragments/main-page-demo :: mainPageDemo}"></div>
+        </div>
+    </div>
+</div>
