@@ -1,0 +1,84 @@
+<div th:fragment="product">
+
+
+    <form class="user" method="POST" th:action="@{'/worksheet/products/'+ ${actualProduct.id} +'/edit'}">
+        <div class="form-group row">
+            <div class="col-sm-2 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">ID</span>
+                <input type="text" class="form-control form-control-user"
+                       id="id" placeholder="" th:name="id" disabled th:value="${actualProduct.id}">
+            </div>
+            <div class="col-sm-2">
+                <span class="form-group-text form-control-user">Egyedi ID</span>
+                <input type="text" class="form-control form-control-user"
+                       id="customId" placeholder="" th:name="customCode" th:value="${actualProduct.customCode}">
+            </div>
+            <div class="col-sm-8">
+                <span class="form-group-text form-control-user">Termék neve</span>
+                <input type="text" class="form-control form-control-user"
+                       id="name" placeholder="" th:name="productName" th:value="${actualProduct.productName}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-12 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Beszerző</span>
+                <select class="form-control-user text-muted form-select" th:name="dealer"
+                        style="padding: 0.9rem 1.0rem;">
+                    <option th:value="${actualProduct.dealer.id}" th:name="dealer"
+                            th:text="${actualProduct.dealer.dealerName}"></option>
+                    <th:block th:each="tempDealerForProduct: ${productDealers}">
+                        <option th:value="${tempDealerForProduct.id}" th:name="dealer"
+                                th:text="${tempDealerForProduct.dealerName}"></option>
+                    </th:block>
+                </select>
+            </div>
+        </div>
+        <span class="form-group-text form-control-user">Beszerzés</span>
+        <div class="form-group row">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Ár nettó</span>
+                <input type="number" class="form-control form-control-user"
+                       id="priceInN" placeholder="" th:name="priceN" th:value="${actualProduct.priceN}">
+            </div>
+            <div class="col-sm-4">
+                <span class="form-group-text form-control-user">Ár bruttó</span>
+                <input type="number" class="form-control form-control-user"
+                       id="priceInB" placeholder="" th:name="priceB" th:value="${actualProduct.priceB}">
+            </div>
+            <div class="col-sm-4">
+                <span class="form-group-text form-control-user">ÁFA</span>
+                <input type="number" class="form-control form-control-user"
+                       id="vatIn" placeholder="" th:name="vat" th:value="${actualProduct.vat}">
+            </div>
+        </div>
+        <span class="form-group-text form-control-user">Eladás</span>
+        <div class="form-group row">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Ár nettó</span>
+                <input type="number" class="form-control form-control-user"
+                       id="priceSellN" placeholder="" th:name="priceSellN" th:value="${actualProduct.priceSellN}">
+            </div>
+            <div class="col-sm-4">
+                <span class="form-group-text form-control-user">Ár bruttó</span>
+                <input type="number" class="form-control form-control-user"
+                       id="priceSellB" placeholder="" th:name="priceSellB" th:value="${actualProduct.priceSellB}">
+            </div>
+            <div class="col-sm-4">
+                <span class="form-group-text form-control-user">ÁFA</span>
+                <input type="number" class="form-control form-control-user"
+                       id="vatSell" placeholder="" th:name="vatSell" th:value="${actualProduct.vatSell}">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <span class="form-group-text form-control-user">Egyéb</span>
+            <textarea class="form-control" style="border-radius: 1rem" id="other" rows="3" th:name="other"
+                      th:value="${actualProduct.other}"></textarea>
+        </div>
+        <input type="submit" id="submit-form" hidden/>
+    </form>
+    <form method="GET" th:action="@{'/worksheet/products/'+ ${actualProduct.id} +'/delete'}">
+        <input type="submit" id="remove-form" hidden/>
+    </form>
+
+</div>

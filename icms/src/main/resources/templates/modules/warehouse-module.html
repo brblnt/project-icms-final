@@ -1,0 +1,23 @@
+<div th:fragment="warehouse-module" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-7 mb-3 mb-sm-0">
+            <a class="nav-link" th:href="@{/warehouse/list}">
+                <h5 class="font-weight-bold">RAKTÁR</h5></a>
+        </div>
+        <div class="col-sm-5">
+            <a href="#" class="btn btn-success p-1"><i class="bi bi-plus"></i> Hozzáadás</a>
+            <a href="#" class="btn btn-success p-1"><i class="bi bi-plus"></i> Összes exportálása</a>
+            <a href="#" class="btn btn-warning p-1"><i class="bi bi-plus"></i> Raktárak kezelése</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div th:switch="${warehouseContent}">
+            <div th:case="'list'">
+                <div th:replace="~{/modules/warehouse/warehouse-list :: warehouse-list}" class="container-fluid"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

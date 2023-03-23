@@ -1,0 +1,194 @@
+<div th:fragment="addressPopUp">
+    <div class="modal fade" id="addressModal" tabindex="-1" role="dialog" aria-labelledby="addressModal"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addressLabel">Cím módosítás</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form class="user" method="post"
+                          th:action="@{'/address/company/'+${company.address1.addressID}+'/edit'}">
+                        <div class="form-group row">
+                            <div class="col-sm-2 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">ID</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="addressID1" placeholder="" disabled th:value="${company.address1.addressID}">
+                            </div>
+                            <div class="col-sm-5">
+                                <span class="form-group-text form-control-user">Irányítószám</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="postalCode1" placeholder="" th:value="${company.address1.postalCode}"
+                                       th:name="postalCode" required>
+                            </div>
+                            <div class="col-sm-5">
+                                <span class="form-group-text form-control-user">Település neve</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="city1" placeholder="" th:value="${company.address1.cityName}"
+                                       th:name="cityName" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Cím</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="addressLong1" placeholder="" th:value="${company.address1.address}"
+                                       th:name="address" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <span class="form-group-text form-control-user">Egyéb</span>
+                            <textarea class="form-control" style="border-radius: 1rem" id="addressOther1" rows="3"
+                                      th:name="other" th:text="${company.address1.other}"></textarea>
+                        </div>
+
+                        <input type="text" th:value="${0}" th:name="id" hidden/>
+                        <input type="text" th:value="${1}" th:name="position" hidden/>
+                        <input type="submit" id="save-form-address1" hidden/>
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <label class="btn button-view-rounded btn-warning" type="button" data-dismiss="modal">Mégsem</label>
+                    <label class="btn button-view-rounded btn-success" type="button"
+                           for="save-form-address1">Mentés</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addressModal2" tabindex="-1" role="dialog" aria-labelledby="addressModal2"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addressLabel2">Cím módosítás</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="user" method="post"
+                          th:action="@{'/address/company/'+${company.address2.addressID}+'/edit'}">
+                        <div class="form-group row">
+                            <div class="col-sm-2 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">ID</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="addressID2" placeholder="" disabled th:value="${company.address2.addressID}">
+                            </div>
+                            <div class="col-sm-5">
+                                <span class="form-group-text form-control-user">Irányítószám</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="postalCode2" placeholder="" th:value="${company.address2.postalCode}"
+                                       th:name="postalCode" required>
+                            </div>
+                            <div class="col-sm-5">
+                                <span class="form-group-text form-control-user">Település neve</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="city2" placeholder="" th:value="${company.address2.cityName}"
+                                       th:name="cityName" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Cím</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="addressLong2" placeholder="" th:value="${company.address2.address}"
+                                       th:name="address" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <span class="form-group-text form-control-user">Egyéb</span>
+                            <textarea class="form-control" style="border-radius: 1rem" id="addressOther2" rows="3"
+                                      th:name="other" th:text="${company.address2.other}"></textarea>
+                        </div>
+
+                        <input type="text" th:value="${0}" th:name="id" hidden/>
+                        <input type="text" th:value="${2}" th:name="position" hidden/>
+                        <input type="submit" id="save-form-address2" hidden/>
+                    </form>
+                    <form method="get" th:action="@{'/address/company/clear/2'}">
+                        <input type="submit" id="delete-form-address2" hidden/>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <label class="btn button-view-rounded btn-warning" type="button" data-dismiss="modal">Mégsem</label>
+                    <label class="btn button-view-rounded btn-success" type="button"
+                           for="save-form-address2">Mentés</label>
+                    <label class="btn button-view-rounded btn-danger" type="button"
+                           for="delete-form-address2">Törlés</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addressModal3" tabindex="-1" role="dialog" aria-labelledby="addressModal3"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addressLabel3">Cím módosítás</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="user" method="post"
+                          th:action="@{'/address/company/'+${company.address3.addressID}+'/edit'}">
+                        <div class="form-group row">
+                            <div class="col-sm-2 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">ID</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="addressID3" placeholder="" disabled th:value="${company.address3.addressID}">
+                            </div>
+                            <div class="col-sm-5">
+                                <span class="form-group-text form-control-user">Irányítószám</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="postalCode3" placeholder="" th:value="${company.address3.postalCode}"
+                                       th:name="postalCode" required>
+                            </div>
+                            <div class="col-sm-5">
+                                <span class="form-group-text form-control-user">Település neve</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="city3" placeholder="" th:value="${company.address3.cityName}"
+                                       th:name="cityName" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Cím</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="addressLong3" placeholder="" th:value="${company.address3.address}"
+                                       th:name="address" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <span class="form-group-text form-control-user">Egyéb</span>
+                            <textarea class="form-control" style="border-radius: 1rem" id="addressOther3" rows="3"
+                                      th:name="other" th:text="${company.address3.other}"></textarea>
+                        </div>
+
+                        <input type="text" th:value="${0}" th:name="id" hidden/>
+                        <input type="text" th:value="${3}" th:name="position" hidden/>
+                        <input type="submit" id="save-form-address3" hidden/>
+                    </form>
+                    <form method="get" th:action="@{'/address/company/clear/3'}">
+                        <input type="submit" id="delete-form-address3" hidden/>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <label class="btn button-view-rounded btn-warning" type="button" data-dismiss="modal">Mégsem</label>
+                    <label class="btn button-view-rounded btn-success" type="button"
+                           for="save-form-address3">Mentés</label>
+                    <label class="btn button-view-rounded btn-danger" type="button"
+                           for="delete-form-address3">Törlés</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

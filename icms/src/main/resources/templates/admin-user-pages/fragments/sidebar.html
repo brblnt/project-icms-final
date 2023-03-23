@@ -1,0 +1,80 @@
+<ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar"
+    th:fragment="sideBarAdmin">
+
+    <div th:insert="~{common-fragments/sidebar-brand :: sidebarBrand}"></div>
+
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item active">
+        <a class="nav-link text-center" th:href="@{/admin/home}">
+            <span>ADMIN PAGE</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        Felhasználói oldalak
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo222"
+           aria-expanded="true" aria-controls="collapseTwo222">
+            <i class="bi bi-compass"></i>
+            <span>Felhasználói oldal</span>
+        </a>
+        <div id="collapseTwo222" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" th:href="@{/super-user/home}">Felhasználó+</a>
+            </div>
+        </div>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        Admin beállítások
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1"
+           aria-expanded="true" aria-controls="collapsePages">
+            <i class="bi bi-people"></i>
+            <span>Felhasználók</span>
+        </a>
+        <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Felhasználók</h6>
+                <a class="collapse-item" th:href="@{/admin/user/list}">Felhasználók kezelése</a>
+                <a class="collapse-item" th:href="@{/admin/user/create}">Felhasználó létrehozása</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
+           aria-expanded="true" aria-controls="collapsePages">
+            <i class="bi bi-gear"></i>
+            <span>Beállítások</span>
+        </a>
+        <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Rendszer beállítások</h6>
+                <a class="collapse-item" th:href="@{/admin/system/database}">Adatbázis rendszer</a>
+                <!--<a class="collapse-item" th:href="@{/admin/system/database}">Levelező rendszer</a>-->
+            </div>
+        </div>
+    </li>
+
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <div class="sidebar-card d-none d-lg-flex">
+        <p class="text-center mb-2"><strong>Technikai támogatás kérése</strong><br>Amennyiben technikai segítségre lenne
+            szüksége vegye fel velünk a kapcsolatot!</p>
+        <a class="btn btn-success btn-sm d-none d-lg-flex" href="mailto:br.blnt10@gmail.com">Kapcsolat</a>
+    </div>
+
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>

@@ -1,0 +1,16 @@
+<div th:fragment="user-content" class="container-fluid">
+    <div th:switch="${content}">
+        <div th:case="'profile-page'">
+            <div th:insert="~{/common-fragments/open-from-topbar/profile-page :: profilePage( ${userTopBar} )}"></div>
+        </div>
+        <div th:case="'worksheet-module'">
+            <div th:insert="~{/modules/worksheet-module :: worksheet-module}"></div>
+        </div>
+        <div th:case="'warehouse-module'">
+            <div th:insert="~{/modules/warehouse-module :: warehouse-module}"></div>
+        </div>
+        <div th:case="*">
+            <div th:insert="~{/common-fragments/main-page-demo :: mainPageDemo}"></div>
+        </div>
+    </div>
+</div>

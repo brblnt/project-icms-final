@@ -1,0 +1,51 @@
+<div th:fragment="empty">
+    <form class="user" method="post" action="#">
+        <div class="form-group row">
+            <div class="col-sm-2 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">ID</span>
+                <input type="text" class="form-control form-control-user"
+                       id="id" placeholder="" disabled>
+            </div>
+            <div class="col-sm-10">
+                <span class="form-group-text form-control-user">Név</span>
+                <input type="text" class="form-control form-control-user"
+                       id="itemName" placeholder="">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Típus</span>
+                <input type="text" class="form-control form-control-user"
+                       id="itemType" placeholder="">
+            </div>
+            <div class="col-sm-4">
+                <span class="form-group-text form-control-user">Márka</span>
+                <input type="text" class="form-control form-control-user"
+                       id="itemBrand" placeholder="">
+            </div>
+            <div class="col-sm-4">
+                <span class="form-group-text form-control-user">SN</span>
+                <input type="text" class="form-control form-control-user"
+                       id="sn" placeholder="">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-12 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Ügyfél</span>
+                <select class="form-control-user form-select text-muted" style="padding: 0.9rem 1.0rem;">
+                    <option value="0"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <span class="form-group-text form-control-user">Egyéb</span>
+            <textarea class="form-control" style="border-radius: 1rem" id="other"
+                      rows="3"></textarea>
+        </div>
+    </form>
+
+
+</div>

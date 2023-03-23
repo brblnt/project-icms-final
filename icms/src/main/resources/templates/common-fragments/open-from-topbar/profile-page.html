@@ -1,0 +1,70 @@
+<div th:fragment="profilePage(userTopBar)">
+    <div class="container">
+        <div class="">
+            <div>
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Fiók adatok</h1>
+                        <img class="img-thumbnail rounded-circle" style="height:150px; width:150px;"
+                             th:src="@{/img/undraw_profile.svg}">
+                    </div>
+                    <form class="user" method="post" th:action="@{/profile/update}">
+                        <div class="form-group">
+                            <span class="form-group-text form-control-user">Felhasználónév</span>
+                            <input type="text" class="form-control form-control-user"
+                                   id="editUserName" disabled th:value="${userTopBar.userName}">
+                        </div>
+                        <div class="form-group row">
+
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Keresztnév</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="editFirstName" th:value="${userTopBar.firstName}"
+                                       placeholder="John" th:name="firstName" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="form-group-text form-control-user">Vezetéknév</span>
+                                <input type="text" class="form-control form-control-user"
+                                       id="editLastName" th:value="${userTopBar.lastName}"
+                                       placeholder="Doe" th:name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="form-group-text form-control-user">E-mail cím</span>
+                            <input type="email" class="form-control form-control-user"
+                                   id="editInputEmail" th:value="${userTopBar.emailAddress}"
+                                   placeholder="minta@mail.hu" th:name="emailAddress" required>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <span class="form-group-text form-control-user">Jelszó</span>
+                                <input type="password" class="form-control form-control-user"
+                                       id="editInputPassword" placeholder="*****" th:name="password">
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="form-group-text form-control-user">Jelszó újra</span>
+                                <input type="password" class="form-control form-control-user"
+                                       id="editRepeatPassword" placeholder="*****" th:name="rePassword">
+                            </div>
+                        </div>
+
+                        <div th:switch="${userTopBar.role}">
+                            <div th:case="'ADMIN'">
+                                <button class="btn btn-danger btn-user btn-block" type="submit">
+                                    Módosítás
+                                </button>
+                            </div>
+                            <div th:case="*">
+                                <button class="btn btn-primary btn-user btn-block" type="submit">
+                                    Módosítás
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

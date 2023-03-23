@@ -1,0 +1,40 @@
+<div th:fragment="empty">
+    <form class="user" method="post" action="#">
+        <div class="form-group row">
+            <div class="col-sm-2 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">ID</span>
+                <input type="text" class="form-control form-control-user"
+                       id="id" placeholder="" disabled>
+            </div>
+            <div class="col-sm-3">
+                <span class="form-group-text form-control-user">Egyedi ID</span>
+                <input type="text" class="form-control form-control-user"
+                       id="customId" placeholder="">
+            </div>
+            <div class="col-sm-7">
+                <span class="form-group-text form-control-user">Név</span>
+                <input type="text" class="form-control form-control-user"
+                       id="name" placeholder="">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Ár nettó</span>
+                <input type="text" class="form-control form-control-user"
+                       id="priceN" placeholder="">
+            </div>
+            <div class="col-sm-4">
+                <span class="form-group-text form-control-user">Ár bruttó</span>
+                <input type="text" class="form-control form-control-user"
+                       id="priceB" placeholder="">
+            </div>
+            <div class="col-sm-4">
+                <span class="form-group-text form-control-user">ÁFA</span>
+                <input type="text" class="form-control form-control-user"
+                       id="vat" placeholder="">
+            </div>
+        </div>
+
+    </form>
+</div>

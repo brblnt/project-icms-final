@@ -1,0 +1,52 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"
+    th:fragment="sideBarUser(su)">
+
+    <div th:insert="~{common-fragments/sidebar-brand :: sidebarBrand}"></div>
+
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item active">
+        <a class="nav-link" th:href="@{/home}">
+            <i class="bi bi-compass"></i>
+            <span>Kezdőlap</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        Integrált rendszer elemei
+    </div>
+
+    <li class="nav-item active">
+        <a class="nav-link" th:href="@{/worksheet/list}">
+            <i class="bi bi-briefcase"></i>
+            <span>MUNKALAP v1.0 (modul)</span></a>
+    </li>
+
+    <li class="nav-item active">
+        <a class="nav-link" th:href="@{/warehouse/list}">
+            <i class="bi bi-box2"></i>
+            <span>RAKTÁR v0.1 (modul)</span></a>
+    </li>
+
+
+    <div th:if="${userTopBar.role} == 'ADMIN'">
+        <li class="nav-item active">
+            <a class="nav-link" th:href="@{/admin/home}">
+                <i class="bi bi-box-arrow-up-left"></i>
+                <span>Vezérlőpult</span></a>
+        </li>
+    </div>
+
+    <hr class="sidebar-divider">
+
+    <div th:if="${su}">
+        <div th:insert="~{super-user-pages/fragments/sidebar :: superUserSidebar}"></div>
+    </div>
+
+
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>

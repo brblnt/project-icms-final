@@ -1,0 +1,41 @@
+<div th:fragment="adminUserList(users)">
+    <div class="row">
+        <div class="text-right">
+<!--            <a type="button" href="javascript:noSelectedElement()" id="userListDataPage" class="btn btn-dark"><i
+                    class="bi bi-clipboard2-data"></i> Adatlap</a>-->
+            <a type="button" href="javascript:noSelectedElement()" id="userListEdit" class="btn btn-secondary"><i
+                    class="bi bi-pencil-square"></i> Szerkesztés</a>
+            <a type="button" href="javascript:noSelectedElement()" id="userListRemove" class="btn btn-danger"><i
+                    class="bi bi-trash3"></i> Törlés</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="table-responsive ">
+            <table class="table dataTable table-striped" id="usersTable">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Felhasználónév</th>
+                    <th>Név</th>
+                    <th>Hozzáférési szint</th>
+                    <th>Hozzáadás dátuma</th>
+                    <th>Státusz</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user: ${users}">
+                    <th scope="row" th:text="${user.id}"></th>
+                    <th scope="row" th:text="${user.userName}"></th>
+                    <td th:text="${user.lastName} + ' ' + ${user.firstName}"></td>
+                    <td th:text="${user.role}"></td>
+                    <td th:text="${user.registrationDate}"></td>
+                    <td th:text="${user.accountEnabled ? 'AKTÍV' : 'INAKTÍV'}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>

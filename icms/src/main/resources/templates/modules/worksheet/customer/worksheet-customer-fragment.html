@@ -1,0 +1,133 @@
+<div th:fragment="customer">
+    <div th:insert="~{/modules/worksheet/worksheet-address-pop-up :: addressPopUp}"></div>
+    <form class="user" id="worksheetCustomerEditForm" method="POST"
+          th:action="@{'/worksheet/customers/'+ ${actualCustomer.id} +'/edit'}">
+        <div class="form-group row">
+            <div class="col-sm-2 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">ID</span>
+                <input type="text" class="form-control form-control-user"
+                       id="id" placeholder="" th:value="${actualCustomer.id}" disabled>
+            </div>
+            <div class="col-sm-10">
+                <span class="form-group-text form-control-user">Ügyfél neve</span>
+                <input type="text" class="form-control form-control-user" required
+                       id="name" th:name="customerName" placeholder="" th:value="${actualCustomer.customerName}">
+            </div>
+        </div>
+        <div id="addressFrameForNewCustomers">
+
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-9 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Cím 1</span>
+                <input type="text" th:name="address1" th:value="${actualCustomer.address1.addressID}" hidden>
+                <input type="text" class="form-control form-control-user"
+                       id="address1"
+                       th:value="${actualCustomer.address1.cityName} + ', ' + ${actualCustomer.address1.address}"
+                       disabled>
+            </div>
+            <div class="col-sm-3">
+                <a href="#" data-toggle="modal" data-target="#addressModal" class="btn btn-secondary btn-user btn-block"
+                   style="margin-top: 1.6rem;">Módosítás
+                </a>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-9 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Cím 2</span>
+                <input type="text" th:name="address2" th:value="${actualCustomer.address2.addressID}" hidden>
+                <input type="text" class="form-control form-control-user"
+                       id="address2"
+                       th:value="${actualCustomer.address2.cityName} + ', ' + ${actualCustomer.address2.address}"
+                       disabled>
+            </div>
+            <div class="col-sm-3">
+                <a href="#" data-toggle="modal" data-target="#addressModal2"
+                   class="btn btn-secondary btn-user btn-block"
+                   style="margin-top: 1.6rem;">Módosítás
+                </a>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-9 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Cím 3</span>
+                <input type="text" th:name="address3" th:value="${actualCustomer.address3.addressID}" hidden>
+                <input type="text" class="form-control form-control-user"
+                       id="address3"
+                       th:value="${actualCustomer.address3.cityName} + ', ' + ${actualCustomer.address3.address}"
+                       disabled>
+            </div>
+            <div class="col-sm-3">
+                <a href="#" data-toggle="modal" data-target="#addressModal3"
+                   class="btn btn-secondary btn-user btn-block"
+                   style="margin-top: 1.6rem;">Módosítás
+                </a>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">E-mail cím</span>
+                <input type="text" class="form-control form-control-user" required
+                       id="emailAddress" th:name="emailAddress" placeholder="minta@mail.hu"
+                       th:value="${actualCustomer.emailAddress}">
+            </div>
+            <div class="col-sm-6">
+                <span class="form-group-text form-control-user">Telefonszám</span>
+                <input type="text" class="form-control form-control-user" required
+                       id="phoneNumber" th:name="phoneNumber" placeholder="+XX XX/XXX-XXXX"
+                       th:value="${actualCustomer.phoneNumber}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Számlaszám</span>
+                <input type="text" th:name="financeID" hidden th:value="${actualCustomer.finance.financeID}">
+                <input type="text" class="form-control form-control-user"
+                       id="accountNumber" th:name="bankAccountNumber" placeholder="XXXXXXXX-XXXXXXXX-XXXXXXXX"
+                       th:value="${actualCustomer.finance.bankAccountNumber}">
+            </div>
+            <div class="col-sm-6">
+                <span class="form-group-text form-control-user">Számlaszám nemzetközi</span>
+                <input type="text" class="form-control form-control-user"
+                       id="iban" th:name="bankAccountNumberInternational" placeholder="TTXX-XXXXXXXXXXXXXXXXXXXXXXXX"
+                       th:value="${actualCustomer.finance.bankAccountNumberInternational}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Adószám</span>
+                <input type="text" class="form-control form-control-user"
+                       id="finance" th:name="numberVAT" placeholder="XXXXXXXX-X-XX"
+                       th:value="${actualCustomer.finance.numberVAT}">
+            </div>
+            <div class="col-sm-6">
+                <span class="form-group-text form-control-user">Közösségi adószám</span>
+                <input type="text" class="form-control form-control-user"
+                       id="euFinance" th:name="euNumberVAT" placeholder="HUXXXXXXXX"
+                       th:value="${actualCustomer.finance.euNumberVAT}">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <span class="form-group-text form-control-user">Egyéb</span>
+            <textarea class="form-control" th:name="other" style="border-radius: 1rem" id="other" rows="3"
+                      th:text="${actualCustomer.other}"></textarea>
+        </div>
+        <div class="container my-auto p-5 m5">
+            <div class="copyright text-center my-auto small">
+                <input type="text" th:name="registrationDate" hidden th:value="${actualCustomer.registrationDate}">
+                <span th:text="'Hozzáadás dátuma: '+${actualCustomer.registrationDate} ">Hozzáadás dátuma: XXXX-XX-XX</span>
+            </div>
+        </div>
+
+
+        <input type="submit" id="submit-form" hidden/>
+    </form>
+    <form method="GET" th:action="@{'/worksheet/customers/'+ ${actualCustomer.id} +'/delete'}">
+        <input type="submit" id="remove-form" hidden/>
+    </form>
+
+
+</div>

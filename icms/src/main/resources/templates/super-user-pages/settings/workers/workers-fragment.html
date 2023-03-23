@@ -1,0 +1,62 @@
+<div th:fragment="workers">
+    <form class="user" method="POST" th:action="@{'/super-user/settings/workers/'+ ${actualWorker.id} +'/edit'}">
+        <div class="form-group row">
+            <div class="col-sm-2 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">Egyedi ID</span>
+                <input type="text" class="form-control form-control-user"
+                       id="id" placeholder="" th:value="${actualWorker.customCode}" th:name="customCode" required>
+            </div>
+            <div class="col-sm-10">
+                <span class="form-group-text form-control-user">Név</span>
+                <input type="text" class="form-control form-control-user"
+                       id="name" placeholder="" th:value="${actualWorker.name}" th:name="name" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <span class="form-group-text form-control-user">E-mail cím</span>
+                <input type="text" class="form-control form-control-user"
+                       id="emailAddress" placeholder="minta@mail.hu" th:value="${actualWorker.emailAddress}"
+                       th:name="emailAddress">
+            </div>
+            <div class="col-sm-6">
+                <span class="form-group-text form-control-user">Telefonszám</span>
+                <input type="text" class="form-control form-control-user"
+                       id="phoneNumber" placeholder="+XX XX/XXX-XXXX" th:value="${actualWorker.phoneNumber}"
+                       th:name="phoneNumber" required>
+            </div>
+            <div class="col-sm-7">
+                <span class="form-group-text form-control-user">Beosztás</span>
+                <input type="text" class="form-control form-control-user"
+                       id="position" placeholder="" th:value="${actualWorker.position}" th:name="position" required>
+            </div>
+            <div class="col-sm-5">
+                <span class="form-group-text form-control-user">Hozzáadási dátum</span>
+                <input type="text" class="form-control form-control-user"
+                       id="regDate" placeholder="XXXX-XX-XX" th:value="${actualWorker.registrationDate}"
+                       th:name="registrationDate" required>
+            </div>
+        </div>
+
+
+        <div class="mb-3">
+            <span class="form-group-text form-control-user">Képesítések</span>
+            <textarea class="form-control" style="border-radius: 1rem" id="skills" rows="3"
+                      th:text="${actualWorker.qualifications}" th:name="qualifications"></textarea>
+        </div>
+        <div class="mb-3">
+            <span class="form-group-text form-control-user">Munkaterület</span>
+            <textarea class="form-control" style="border-radius: 1rem" id="workArea" rows="3"
+                      th:text="${actualWorker.workingArea}" th:name="workingArea"></textarea>
+        </div>
+        <div class="mb-3">
+            <span class="form-group-text form-control-user">Egyéb</span>
+            <textarea class="form-control" style="border-radius: 1rem" id="other" rows="3"
+                      th:text="${actualWorker.other}" th:name="other"></textarea>
+        </div>
+        <input type="submit" id="submit-form" hidden/>
+    </form>
+    <form method="GET" th:action="@{'/super-user/settings/workers/'+${actualWorker.id}+'/delete'}">
+        <input type="submit" id="remove-form" hidden/>
+    </form>
+</div>
