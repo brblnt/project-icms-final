@@ -5,15 +5,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import brblnt.icms.IcmsApplication;
 import brblnt.icms.service.exceptions.ConfigurationNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 /**
  * Configuration Reader. Read keys from a properties file.
  */
-@Service
+@Component
 @Slf4j
 public class ConfigReader {
   private final Properties PROPERTIES = new Properties();
@@ -22,13 +24,18 @@ public class ConfigReader {
   private final String NAME_SYSTEM_PROPERTIES_FILE = "application.properties";
 
   @Autowired
+  public ConfigReader() throws ConfigurationNotFoundException {
+    readProperties();
+  }
+
+
   private void readProperties() throws ConfigurationNotFoundException {
-    try (InputStream input = ConfigReader.class.getClassLoader().getResourceAsStream(NAME_PROPERTIES_FILE)) {
+    try (InputStream input = IcmsApplication.class.getClassLoader().getResourceAsStream(NAME_PROPERTIES_FILE)) {
       PROPERTIES.load(input);
     } catch (Exception ex) {
       //throw new ConfigurationNotFoundException("Cannot load configuration file! File not found!");
     }
-    try (InputStream input = ConfigReader.class.getClassLoader().getResourceAsStream(NAME_SYSTEM_PROPERTIES_FILE)) {
+    try (InputStream input = IcmsApplication.class.getClassLoader().getResourceAsStream(NAME_SYSTEM_PROPERTIES_FILE)) {
       SYSTEM.load(input);
     } catch (Exception ex) {
       //throw new ConfigurationNotFoundException("Cannot load configuration file! File not found!");
@@ -37,8 +44,8 @@ public class ConfigReader {
 
   private void saveProperties() {
     try {
-      PROPERTIES.store(new FileOutputStream("src/main/resources/config.properties"), null);
-      SYSTEM.store(new FileOutputStream("src/main/resources/application.properties"), null);
+      PROPERTIES.store(new FileOutputStream("icms/src/main/resources/config.properties"), null);
+      SYSTEM.store(new FileOutputStream("icms/src/main/resources/application.properties"), null);
     } catch (IOException ex) {
       System.out.println(ex);
     }
