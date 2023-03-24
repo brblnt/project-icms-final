@@ -30,11 +30,9 @@ $(document).ready( function () {
 
 
         if (table.rows('.selected').data().length == 0) {
-            document.getElementById("userListDataPage").href="javascript:noSelectedElement()";
             document.getElementById("userListEdit").href="javascript:noSelectedElement()";
             document.getElementById("userListRemove").href="javascript:noSelectedElement()";
         } else {
-            document.getElementById("userListDataPage").href="/admin/user/"+table.rows('.selected').data()[0][0]+"/edit";
             document.getElementById("userListEdit").href="/admin/user/"+table.rows('.selected').data()[0][0]+"/edit";
             document.getElementById("userListRemove").href="/admin/user/remove/"+table.rows('.selected').data()[0][0];
         }
