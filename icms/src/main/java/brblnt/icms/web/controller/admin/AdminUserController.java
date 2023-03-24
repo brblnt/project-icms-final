@@ -79,18 +79,13 @@ public class AdminUserController {
   @PostMapping(path = CREATE_URL, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
   @PreAuthorize(ADMIN_ROLE)
   public String getUserCreate(
-          Authentication authentication, final Model model, final UserRequest userRequest,
+          Authentication authentication, final UserRequest userRequest,
           final RedirectAttributes redirectAttributes) {
 
     CompleteUser actualUser = utilities.getApplicationUser(authentication);
     if (actualUser.getUserName().equals(PASSWORD_EXPIRE_NAME)) {
       return PASSWORD_EXPIRED_REDIRECT;
     }
-
-    model.addAttribute(ROLE_FOR_CONTENT, ADMIN);
-    model.addAttribute(MODEL_THEME, ADMIN_THEME);
-    model.addAttribute(MODEL_CONTENT, USER_CREATE);
-    model.addAttribute(MODEL_TOPBAR, actualUser);
 
     if (adminUserService.exist(userRequest.getUserName())) {
       redirectAttributes.addFlashAttribute(SUCCESS, false);
@@ -102,7 +97,6 @@ public class AdminUserController {
     String[] array = user.getUserName().split(";");
 
     if (!adminUserService.isNameOrEmailEmpty(userRequest)) {
-      user.setUserName(array[0]);
       redirectAttributes.addFlashAttribute(SUCCESS, true);
       redirectAttributes.addFlashAttribute(MESSAGE_LINE_ONE, MESSAGE_SUCCESS);
       redirectAttributes.addFlashAttribute(MESSAGE_LINE_TWO, "felhasználónév: " + array[0] + " jelszó: " + array[1] + "");

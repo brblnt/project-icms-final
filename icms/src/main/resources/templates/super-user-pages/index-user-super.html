@@ -1,5 +1,4 @@
 <div th:fragment="super-user-content" class="container-fluid">
-
     <div th:switch="${superUserContent}">
         <div th:case="'basic-information-settings'">
             <div th:replace="~{/super-user-pages/settings/basic-information-settings  :: basic-information-settings}"

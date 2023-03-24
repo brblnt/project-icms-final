@@ -19,7 +19,6 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class MainApplicationUserDaoService implements ApplicationUserDao {
 
-  private final PasswordEncoder passwordEncoder;
   private final ApplicationUserRepository repository;
   private final Converter<ApplicationUserJPA, ApplicationUser> convertApplicationUserJPAToApplicationUser;
 
