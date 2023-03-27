@@ -3,31 +3,32 @@ function checkboxValidate() {
   var checkBoxAdmin = document.getElementById("editRoleAdmin");
   var checkBoxSuper = document.getElementById("editRoleSup");
 
-//TODO: little correction if admin checked change to suser
+
   if (checkBoxAdmin.checked == true){
     checkBoxSuper.checked = false;
   } else if (checkBoxSuper.checked == true){
       checkBoxAdmin.checked = false;
   }
+
 }
 
-form.addEventListener('submit', () => {
-    if(document.getElementById("editEnabled").checked) {
-        document.getElementById('editEnabledHidden').disabled = true;
-    }
-    if(document.getElementById("passwordChangedCheck").checked) {
-            document.getElementById('passwordChangedCheckHidden').disabled = true;
-    }
-    if(document.getElementById("editExpired").checked) {
-            document.getElementById('editExpiredHidden').disabled = true;
-    }
-    if(document.getElementById("editLocked").checked) {
-            document.getElementById('editLockedHidden').disabled = true;
-    }
-    if(document.getElementById("editCredentialsExpired").checked) {
-            document.getElementById('editCredentialsExpiredHidden').disabled = true;
-    }
-})
+    form.addEventListener('submit', () => {
+        if(document.getElementById("editEnabled").checked) {
+            document.getElementById('editEnabledHidden').disabled = true;
+        }
+        if(document.getElementById("passwordChangedCheck").checked) {
+                document.getElementById('passwordChangedCheckHidden').disabled = true;
+        }
+        if(document.getElementById("editExpired").checked) {
+                document.getElementById('editExpiredHidden').disabled = true;
+        }
+        if(document.getElementById("editLocked").checked) {
+                document.getElementById('editLockedHidden').disabled = true;
+        }
+        if(document.getElementById("editCredentialsExpired").checked) {
+                document.getElementById('editCredentialsExpiredHidden').disabled = true;
+        }
+    })
 
 
 

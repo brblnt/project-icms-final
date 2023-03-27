@@ -347,40 +347,40 @@ $(document).ready(function () {
 });
 
 
-$(document).ready(function () {
-    var table = $('#colleagues').DataTable({
-    "paging": true,
-    "bInfo": true,
-    "language": {
-        "lengthMenu":         "Mutass:  _MENU_  elemet",
-        "zeroRecords":        "Nincs találat!",
-        "info":               "",
-        "infoEmpty":          "Nincs megjeleníthető elem",
-        "infoFiltered":       "(szűrve ennyiből: _MAX_)",
-        "search":             "Keresés:",
-        "loadingRecords":     "Betöltés...",
-        "processing":         "Folyamatban...",
-        "paginate": {
-            "first":              "Első",
-            "last":               "Utolsó",
-            "next":               "Következő",
-            "previous":           "Előző"}}
-    });
-    $('#colleagues tbody').on('click', 'tr', function () {
-        if ($(this).hasClass('selected')) {
-            $(this).removeClass('selected');
-        } else {
-            table.$('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-        }
-        var id = -1;
-        try {
-          id = table.rows('.selected').data()[0][0];
-        } catch (error) {
+    $(document).ready(function () {
+        var table = $('#colleagues').DataTable({
+        "paging": true,
+        "bInfo": true,
+        "language": {
+            "lengthMenu":         "Mutass:  _MENU_  elemet",
+            "zeroRecords":        "Nincs találat!",
+            "info":               "",
+            "infoEmpty":          "Nincs megjeleníthető elem",
+            "infoFiltered":       "(szűrve ennyiből: _MAX_)",
+            "search":             "Keresés:",
+            "loadingRecords":     "Betöltés...",
+            "processing":         "Folyamatban...",
+            "paginate": {
+                "first":              "Első",
+                "last":               "Utolsó",
+                "next":               "Következő",
+                "previous":           "Előző"}}
+        });
+        $('#colleagues tbody').on('click', 'tr', function () {
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            } else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+            var id = -1;
+            try {
+              id = table.rows('.selected').data()[0][0];
+            } catch (error) {
 
-        }
+            }
 
-        var url = '/super-user/settings/workers/' + id;
-        $("#frameWorker").load(url,$("#frameWorker").serialize());
+            var url = '/super-user/settings/workers/' + id;
+            $("#frameWorker").load(url,$("#frameWorker").serialize());
+        });
     });
-});

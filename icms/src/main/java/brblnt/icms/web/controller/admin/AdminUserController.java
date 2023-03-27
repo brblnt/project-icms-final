@@ -99,7 +99,8 @@ public class AdminUserController {
     if (!adminUserService.isNameOrEmailEmpty(userRequest)) {
       redirectAttributes.addFlashAttribute(SUCCESS, true);
       redirectAttributes.addFlashAttribute(MESSAGE_LINE_ONE, MESSAGE_SUCCESS);
-      redirectAttributes.addFlashAttribute(MESSAGE_LINE_TWO, "felhasználónév: " + array[0] + " jelszó: " + array[1] + "");
+      redirectAttributes.addFlashAttribute(MESSAGE_LINE_TWO,
+              "felhasználónév: " + array[0] + " jelszó: " + array[1] + "");
     } else {
       redirectAttributes.addFlashAttribute(SUCCESS, false);
       redirectAttributes.addFlashAttribute(MESSAGE_LINE_ONE, MISSING_INFORMATION);
@@ -168,7 +169,6 @@ public class AdminUserController {
     }
 
     adminUserService.save(userRequest, user);
-
 
     redirectAttributes.addFlashAttribute(SUCCESS, true);
     redirectAttributes.addFlashAttribute(MESSAGE_LINE_ONE, MESSAGE_SUCCESS);

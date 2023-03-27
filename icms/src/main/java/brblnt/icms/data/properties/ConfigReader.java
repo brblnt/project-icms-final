@@ -33,12 +33,12 @@ public class ConfigReader {
     try (InputStream input = IcmsApplication.class.getClassLoader().getResourceAsStream(NAME_PROPERTIES_FILE)) {
       PROPERTIES.load(input);
     } catch (Exception ex) {
-      //throw new ConfigurationNotFoundException("Cannot load configuration file! File not found!");
+      log.warn(String.valueOf(ex));
     }
     try (InputStream input = IcmsApplication.class.getClassLoader().getResourceAsStream(NAME_SYSTEM_PROPERTIES_FILE)) {
       SYSTEM.load(input);
     } catch (Exception ex) {
-      //throw new ConfigurationNotFoundException("Cannot load configuration file! File not found!");
+      log.warn(String.valueOf(ex));
     }
   }
 
@@ -47,7 +47,7 @@ public class ConfigReader {
       PROPERTIES.store(new FileOutputStream("icms/src/main/resources/config.properties"), null);
       SYSTEM.store(new FileOutputStream("icms/src/main/resources/application.properties"), null);
     } catch (IOException ex) {
-      System.out.println(ex);
+      log.warn(String.valueOf(ex));
     }
 
   }

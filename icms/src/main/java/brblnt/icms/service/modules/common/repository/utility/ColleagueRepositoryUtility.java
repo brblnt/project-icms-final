@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class ColleagueRepositoryUtility implements UtilityInterface<ColleagueJPA, ColleagueNotFoundException> {
+  public class ColleagueRepositoryUtility implements UtilityInterface<ColleagueJPA, ColleagueNotFoundException> {
 
   private final ColleagueRepository colleagueRepository;
 

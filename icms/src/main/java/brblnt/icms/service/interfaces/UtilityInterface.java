@@ -20,3 +20,5 @@ public interface UtilityInterface<T, E extends Exception> {
 
   void delete(Long id);
 }
+
+
