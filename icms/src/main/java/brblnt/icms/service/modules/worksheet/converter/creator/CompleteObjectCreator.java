@@ -53,4 +53,17 @@ public class CompleteObjectCreator implements CompleteCreator<CompleteObject> {
     co.setOther(tempObject.getOther());
     return co;
   }
+
+  public CompleteObject createEmpty() {
+    CompleteObject co = new CompleteObject();
+
+    co.setId(0L);
+    co.setCustomer(completeCustomerCreator.createEmpty());
+    co.setItemName("");
+    co.setItemBrand("");
+    co.setItemType("");
+    co.setItemSerial("");
+    co.setOther("");
+    return co;
+  }
 }

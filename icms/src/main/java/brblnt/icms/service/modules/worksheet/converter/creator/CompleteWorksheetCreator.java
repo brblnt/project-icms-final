@@ -61,8 +61,18 @@ public class CompleteWorksheetCreator implements CompleteCreator<CompleteWorkshe
     cw.setId(tempWorksheet.getId());
     cw.setState(tempWorksheet.getState());
     cw.setEngineerCode(tempWorksheet.getEngineerCode());
-    cw.setCustomer(completeCustomerCreator.createById((long) tempWorksheet.getCustomerID()));
-    cw.setObject(completeObjectCreator.createById((long) tempWorksheet.getObjectID()));
+
+    try {
+      cw.setCustomer(completeCustomerCreator.createById((long) tempWorksheet.getCustomerID()));
+    } catch (Exception e) {
+      cw.setCustomer(completeCustomerCreator.createEmpty());
+    }
+
+    try {
+      cw.setObject(completeObjectCreator.createById((long) tempWorksheet.getObjectID()));
+    } catch (Exception e) {
+      cw.setObject(completeObjectCreator.createEmpty());
+    }
 
     ArrayList<CompleteFault> faults = new ArrayList<>();
     String[] faultsArray = tempWorksheet.getFaultsID().split(";");
